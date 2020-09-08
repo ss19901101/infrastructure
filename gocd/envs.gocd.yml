@@ -1,0 +1,20 @@
+format_version: 1
+environments:
+  o2o2:
+    environment_variables:
+      DOCKER_REGISTRY: TCDCA0000401:5000
+      HTTPS_PROXY: http://proxy-server1.cn.svc.corpintra.net:3128
+      HTTP_PROXY: http://proxy-server1.cn.svc.corpintra.net:3128
+      NPM_CONFIG_PROXY: http://proxy-server1.cn.svc.corpintra.net:3128
+      NPM_CONFIG_HTTPS_PROXY: http://proxy-server1.cn.svc.corpintra.net:3128
+      NPM_CONFIG_DISTURL: https://npm.taobao.org/mirrors/node
+      PYPI_ALI: https://mirrors.aliyun.com/pypi/simple/
+      AGENT_DATA_DIR: /var/data/gocd/agent/pipelines
+      ANSIBLE_IMG: williamyeh/ansible:alpine3
+      APPADMIN_UID: 2003
+      APPADMIN_GID: 2002
+    secure_variables:
+      # this is encrypted with gocd encrypt API; not the actual password
+      VAULTPASS: "aG++gMlVu9nWeQtTsdieyFTeTRqkgfwn"
+    pipelines:
+      - pcep-pce

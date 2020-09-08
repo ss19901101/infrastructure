@@ -1,0 +1,49 @@
+format_version: 3
+pipelines:
+  pcep-pce:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      svn:
+        svn: svn://124.127.117.170/sdn/projects/pcep_py
+        username: shenshuo
+        check_externals: true
+        auto_update: true
+        encrypted_password: AES:ME1X7oxPYamDqKD4b8Cpzw==:Dc6UBOb7bk4ZoE7TE3hYDTi1FKdXYXRphlg6YimGmV8=
+    stages:
+    - build:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: manual
+          allow_only_on_success: false
+        jobs:
+          build:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - -c
+                - docker build -t pcep .
+                command: /bin/bash
+                run_if: passed
+    - run:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          run:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - -c
+                - docker run -d -p 9999:9999 -p 4189:4189 pcep
+                command: /bin/bash
+                run_if: passed
