@@ -1,0 +1,21 @@
+format_version: 1
+pipelines:
+  ansible-adhoc:
+    group: ops
+    approval: manual
+    environment_variables:
+      COMMAND: 'ansible --version'
+    materials:
+      deploy:
+        # git: "https://Ilikes:P%40ssw0rd%211@git.mercedes-benz.com/china/its/cs/InfraO2O.git"
+        git: "https://github.com/ss19901101/infrastructure.git"
+        branch: master
+        shallow_clone: true
+        destination: deploy
+    stages:
+      - run:
+          approval: manual
+          tasks:
+            - script: |
+                cd deploy
+                gocd/run_ansible.sh "$COMMAND"
