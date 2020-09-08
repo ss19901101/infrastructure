@@ -1,6 +1,6 @@
 format_version: 3
 environments:
-  o2o2:
+  pcep:
     environment_variables:
       DOCKER_REGISTRY: TCDCA0000401:5000
       HTTPS_PROXY: http://proxy-server1.cn.svc.corpintra.net:3128
@@ -13,8 +13,5 @@ environments:
       ANSIBLE_IMG: williamyeh/ansible:alpine3
       APPADMIN_UID: 2003
       APPADMIN_GID: 2002
-    secure_variables:
-      # this is encrypted with gocd encrypt API; not the actual password
-      VAULTPASS: "aG++gMlVu9nWeQtTsdieyFTeTRqkgfwn"
     pipelines:
       - pcep-pce
