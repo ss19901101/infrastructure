@@ -9,7 +9,6 @@ environments:
       NPM_CONFIG_HTTPS_PROXY: http://proxy-server1.cn.svc.corpintra.net:3128
       NPM_CONFIG_DISTURL: https://npm.taobao.org/mirrors/node
       PYPI_ALI: https://mirrors.aliyun.com/pypi/simple/
-      AGENT_DATA_DIR: /var/data/gocd/agent/pipelines
       ANSIBLE_IMG: williamyeh/ansible:alpine3
       APPADMIN_UID: 2003
       APPADMIN_GID: 2002
